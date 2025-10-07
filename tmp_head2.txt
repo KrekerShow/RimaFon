@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Риматон — Ивент по RimWorld</title>
+    <meta name="description" content="Риматон: предложи идею донатом — добавим в рулетку. Каждые 5?000 ? обеспечивают дополнительный стрим на неделе.">
+    <meta property="og:title" content="Риматон — Ивент по RimWorld">
+    <meta property="og:description" content="1) Пожертвуй с названием идеи > 2) Рулетка выбирает > 3) Каждые 5?000 ? = +1 стрим на неделе.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+      :root { --bg:#0a0a0a; --panel:rgba(0,0,0,0.4); --border:rgba(255,255,255,0.1); --text:#e4e4e7; --muted:#a1a1aa; --accent:#ffffff; }
+      *{box-sizing:border-box}
+      html,body{height:100%}
+      html{scroll-behavior:smooth}
+      body{margin:0; font-family:"Rubik","Inter","Segoe UI","Noto Sans","PT Sans",system-ui,Arial,sans-serif; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility}
+      a{color:var(--accent); text-decoration:none}
+      .container{max-width:1100px; margin:0 auto; padding:0 16px}
+      .badge{display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid var(--border); color:var(--text)}
+      h1{font-size:48px; margin:10px 0 0; color:#fff; letter-spacing:-0.02em}
+      h2{font-size:28px; margin:0 0 12px; color:#fff}
+      p{color:var(--text); line-height:1.6}
+      .hero{position:relative; padding:80px 0 40px; text-align:center; overflow:hidden}
+      .hero .actions{margin-top:20px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+      .button{display:inline-flex; align-items:center; gap:8px; padding:12px 18px; border-radius:14px; border:1px solid var(--border); background:#fff; color:#000; font-weight:600}
+      .button.secondary{background:rgba(255,255,255,0.08); color:#fff}
+      .section{padding:24px 0}
+      .card{background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:16px; backdrop-filter: blur(8px)}
+      .grid{display:grid; grid-template-columns:1fr; gap:16px}
+      @media (min-width:768px){ .grid.cols-3{grid-template-columns:repeat(3,1fr)} .grid.cols-2{grid-template-columns:repeat(2,1fr)} }
+      .list .item{display:flex; flex-direction:column; gap:8px; padding:14px; border:1px solid var(--border); border-radius:14px; background:rgba(255,255,255,0.03)}
+      .item .title{display:flex; align-items:center; justify-content:space-between; gap:12px; color:#fff; font-weight:700}
+      .item .desc{color:var(--muted)}
+      .tags{display:flex; flex-wrap:wrap; gap:6px}
+      .tag{padding:4px 8px; font-size:12px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid var(--border); color:var(--text)}
+      .links{display:flex; gap:8px; flex-wrap:wrap}
+      .link-btn{padding:8px 10px; font-weight:600; border-radius:10px; border:1px solid var(--border); background:rgba(255,255,255,0.08); color:#fff}
+      .footer{padding:32px 0 48px; color:var(--muted); text-align:center; font-size:14px}
+      .bg-grid:before, .bg-grid:after{content:""; position:absolute; inset:0; z-index:-1}
+      .bg-grid:before{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.12) 0, rgba(255,255,255,0.12) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, rgba(255,255,255,0.12) 0, rgba(255,255,255,0.12) 1px, transparent 1px, transparent 40px); opacity:.06}
+      .bg-grid:after{background:radial-gradient(60% 40% at 70% 10%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 60%), radial-gradient(40% 30% at 30% 80%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 60%)}
+      .small{font-size:13px}
+      .muted{color:var(--muted)}
+      .topbar{position:sticky; top:0; z-index:20; background:#0e0e0f; border-bottom:1px solid var(--border); box-shadow:0 1px 0 rgba(255,255,255,0.06)}
+      .topbar .inner{display:flex; gap:12px; align-items:center; justify-content:center; padding:8px 0; flex-wrap:wrap}
+      .topbar .note{font-weight:600}
+      /* Мягкая подсветка якорей: только рамка */
+      .flash{animation:flashBorder 1.2s ease-out; border-color:rgba(255,255,255,.85)!important}
+      @keyframes flashBorder{0%{border-color:rgba(255,255,255,.95)}100%{border-color:var(--border)}}
+      /* Визуал ссылок-строк */
+      .link-card{background:var(--panel); border:1px solid var(--border); box-shadow:none}
+      .link-card h3{font-size:20px; letter-spacing:.2px}
+      .links-list{display:grid; gap:8px; margin:0; padding:0}
+      .links-list li{list-style:none}
+      .link-row{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:rgba(255,255,255,0.03); transition:background .2s, border-color .2s}
+      .link-row:hover{background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2)}
+      .link-row .left{display:flex; align-items:center; gap:10px}
+      .ext{opacity:.6}
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container inner">
+        <span class="note">Предложи идею к стримам</span>
+        <a class="button" href="https://www.donationalerts.com/r/krekeros" target="_blank" rel="noopener">DonationAlerts</a>
+      </div>
+    </div>
+
+    <div class="hero bg-grid">
+      <div class="container">
+        <span class="badge">Ивент по RimWorld</span>
+        <h1>Риматон</h1>
+        <p class="muted">RimWorld: предложи идею донатом — добавим её в рулетку; каждые 5?000 ? обеспечивают дополнительный стрим на неделе.</p>
+        <div class="actions">
+          <a class="button" href="https://www.donationalerts.com/r/krekeros" target="_blank" rel="noopener">Предложить идею</a>
+          <a class="button secondary" href="#upcoming">К текущей колонии</a>
+          <a class="button secondary" href="#links">Полезные ссылки</a>
+        </div>
+        <p class="muted small" style="margin-top:10px">Шаблон идеи: Формат — Условия — Ограничения (1–2 предложения)</p>
+      </div>
+    </div>
+
+    <section id="how" class="section">
+      <div class="container">
+        <div class="card">
+          <h2>Как это работает</h2>
+          <ul style="margin:6px 0 0; padding-left:18px; line-height:1.8">
+            <li>Пожертвуй с названием идеи</li>
+            <li>Рулетка выбирает</li>
+            <li>Каждые 5?000 ? = +1 стрим на неделе</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <main class="container">
+      <section id="about" class="section">
+        <div class="grid cols-2">
+          <div class="card">
+            <h2>Формат</h2>
+            <ul style="margin:0; padding-left:18px; line-height:1.7">
+              <li>Я, стример Krekeros, играю в колонии на различных условиях: челленджи, уникальные сценарии, карты, сборки модов и донат?ивенты.</li>
+              <li>Есть рулетка с челленджами — пополняйте своими идеями через донат.</li>
+              <li>Чтобы успевать готовиться, выбираем 3 идеи наперёд (аукционом).</li>
+              <li>Иногда бывают трансляции вне формата: коллаборации или сборки модов, если времени мало.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>Добавление идей в аукцион</h2>
+            <ul style="margin:0; padding-left:18px; line-height:1.9; font-size:17px">
+              <li>Добавить можно любую идею за любой донат — главное указать её название в описании.</li>
+              <li>Идеи выбираются один раз с рулетки между стартами новых форматов.</li>
+              <li>Идея может идти несколько стримов подряд, если нравится чату или стримеру.</li>
+              <li>Если идея не расписана подробно, часть реализации ляжет на стримера.</li>
+              <li>Часто используются базовые сборки модов вроде <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1955361870" target="_blank" rel="noopener">RICE STANDART</a> + пара модов под формат.</li>

@@ -1,0 +1,31 @@
+        </nav>
+        <a class="button" href="https://www.donationalerts.com/r/krekeros" target="_blank" rel="noopener">DonationAlerts</a>
+      </div>
+    </div>
+
+    <div class="hero bg-grid">
+      <div class="container">
+        <span class="badge">Ивент по RimWorld</span>
+        <h1>Риматон</h1>
+        <p class="muted">RimWorld: предложи идею донатом — добавим её в рулетку; каждые 5?000 ? обеспечивают дополнительный стрим на неделе.</p>
+        <div class="actions">
+          <a class="button" href="https://www.donationalerts.com/r/krekeros" target="_blank" rel="noopener">Предложить идею</a>
+          <a class="button secondary" href="#upcoming">К текущей колонии</a>
+          <a class="button secondary" href="#links">Полезные ссылки</a>
+        </div>
+        <p class="muted small" style="margin-top:10px">Шаблон идеи: Формат — Условия — Ограничения (1–2 предложения)</p>
+      </div>
+    </div>
+
+    <section id="how" class="section">
+      <div class="container">
+        <div class="card">
+          <h2>Как это работает</h2>
+          <ul style="margin:6px 0 0; padding-left:18px; line-height:1.8">
+            <li>Пожертвуй с названием идеи</li>
+            <li>Рулетка выбирает</li>
+            <li>Каждые 5?000 ? = +1 стрим на неделе</li>
+          </ul>
+        </div>
+      </div>
+    </section>

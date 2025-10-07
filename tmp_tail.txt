@@ -1,0 +1,120 @@
+          <div class="list grid" id="finished-list"></div>
+        </div>
+      </section>
+
+      <section id="links" class="section">
+        <h2>Полезные ссылки</h2>
+        <div class="grid cols-2">
+          <div class="card link-card">
+            <h3 style="margin:0 0 8px;color:#fff">Для анонсов</h3>
+            <ul class="links-list">
+              <li><a class="link-row" href="https://discord.gg/Vrbux5k" target="_blank" rel="noopener"><span class="left"><span>Discord</span></span><span class="ext">?</span></a></li>
+              <li><a class="link-row" href="https://t.me/Krek4at" target="_blank" rel="noopener"><span class="left"><span>Telegram</span></span><span class="ext">?</span></a></li>
+            </ul>
+          </div>
+          <div class="card link-card">
+            <h3 style="margin:0 0 8px;color:#fff">Для сборок</h3>
+            <ul class="links-list">
+              <li><a class="link-row" href="https://boosty.to/krekeross" target="_blank" rel="noopener"><span class="left"><span>Boosty (порядок модов)</span></span><span class="ext">?</span></a></li>
+              <li><a class="link-row" href="https://steamcommunity.com/id/KrekerShow/myworkshopfiles/?section=collections&appid=294100" target="_blank" rel="noopener"><span class="left"><span>Актуальные сборки 1.6 в Steam</span></span><span class="ext">?</span></a></li>
+            </ul>
+          </div>
+          <div class="card link-card">
+            <h3 style="margin:0 0 8px;color:#fff">Стримы</h3>
+            <ul class="links-list">
+              <li><a class="link-row" href="https://twitch.tv/krekeross" target="_blank" rel="noopener"><span class="left"><span>Twitch</span></span><span class="ext">?</span></a></li>
+              <li><a class="link-row" href="https://www.youtube.com/channel/UC1bAC9hbVc-hnDwIAuHsDRg" target="_blank" rel="noopener"><span class="left"><span>YouTube</span></span><span class="ext">?</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        Сделано для ивента «Риматон».
+      </div>
+    </footer>
+
+    <script>
+      // ДАННЫЕ ДЛЯ РЕДАКТИРОВАНИЯ
+      // Первая запись в upcoming считается «Текущая» и показывает кнопки; вторая — «Следующая» без кнопок
+      const upcoming = [
+        {
+          title: 'Текущая: Колония «Северный ветер»',
+          desc: 'Классический старт «Три изгнанника». Без пермадеафа.',
+          watch: '#',
+          mods: '#'
+        },
+        { title: 'Пустынный марш', desc: 'Хардкорный забег в пустыне. Максимальный челендж.' },
+        { title: 'Токсичный фронтир', desc: 'Старт в биоме с токсичными осадками.' }
+      ];
+
+      const finished = [
+        // Пример:
+        // { title: 'Горный приют', desc: 'База в горном биоме, финал — корабль.', watch: '#', mods: '#' }
+      ];
+
+      const upcomingEl = document.getElementById('upcoming-list');
+      const finishedEl = document.getElementById('finished-list');
+      const upcomingCountEl = document.getElementById('upcoming-count');
+      const finishedCountEl = document.getElementById('finished-count');
+
+      function renderUpcoming() {
+        if (!upcoming.length) { upcomingEl.innerHTML = '<p class="muted small">Пока пусто.</p>'; upcomingCountEl.textContent='(0)'; return; }
+        upcomingEl.innerHTML = upcoming.map((g, i) => `
+          <div class="item">
+            <div class="title">
+              <span>${g.title}</span>
+              ${i === 0 ? '<span class="tag" style="background:#fff;color:#000">Текущая</span>' : (i === 1 ? '<span class="tag">Следующая</span>' : '')}
+            </div>
+            <div class="desc">${g.desc || ''}</div>
+            ${i === 0 ? `<div class="links">
+              ${g.watch ? `<a class="link-btn" href="${g.watch}" target="_blank" rel="noopener">Смотреть</a>` : ''}
+              ${g.mods ? `<a class="link-btn" href="${g.mods}" target="_blank" rel="noopener">Моды</a>` : ''}
+            </div>` : ''}
+          </div>
+        `).join('');
+        upcomingCountEl.textContent = `(${upcoming.length})`;
+      }
+
+      function renderFinished() {
+        if (!finished.length) { finishedEl.innerHTML = '<p class="muted small">Ещё нет завершённых колоний.</p>'; finishedCountEl.textContent='(0)'; return; }
+        finishedEl.innerHTML = finished.map(g => `
+          <div class="item">
+            <div class="title"><span>${g.title}</span></div>
+            <div class="desc">${g.desc || ''}</div>
+            <div class="links">
+              ${g.watch ? `<a class="link-btn" href="${g.watch}" target="_blank" rel="noopener">Смотреть</a>` : ''}
+              ${g.mods ? `<a class="link-btn" href="${g.mods}" target="_blank" rel="noopener">Моды</a>` : ''}
+            </div>
+          </div>
+        `).join('');
+        finishedCountEl.textContent = `(${finished.length})`;
+      }
+
+      // Подсветка секций при переходе по якорям (мягкая рамка)
+      function flashSection(id){
+        const sec = document.getElementById(id);
+        if(!sec) return;
+        const targets = sec.querySelectorAll('.card');
+        const list = targets.length ? Array.from(targets) : [sec];
+        list.forEach(el => el.classList.add('flash'));
+        setTimeout(()=> list.forEach(el => el.classList.remove('flash')), 1200);
+      }
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', e=>{
+          const href = a.getAttribute('href');
+          if(!href) return;
+          const id = href.slice(1);
+          setTimeout(()=> flashSection(id), 200);
+        });
+      });
+      if(location.hash){ setTimeout(()=> flashSection(location.hash.slice(1)), 300); }
+
+      renderUpcoming();
+      renderFinished();
+    </script>
+  </body>
+</html>
+

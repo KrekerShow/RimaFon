@@ -1,0 +1,36 @@
+      .topbar .inner{display:flex; gap:12px; align-items:center; justify-content:center; padding:8px 0; flex-wrap:wrap}
+      .topbar .note{font-weight:600}
+      .nav{display:flex; gap:8px; flex-wrap:wrap}
+      .nav a{padding:8px 10px; border-radius:10px; color:var(--text); border:1px solid transparent; transition:background .2s, border-color .2s, color .2s}
+      .nav a:hover{background:rgba(255,255,255,0.07); border-color:rgba(255,255,255,0.18); color:#fff}
+      .nav a.active{background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.22); color:#fff}
+      /* ћ€гка€ подсветка €корей: только рамка */
+      .flash{animation:flashBorder 1.2s ease-out; border-color:rgba(255,255,255,.85)!important}
+      @keyframes flashBorder{0%{border-color:rgba(255,255,255,.95)}100%{border-color:var(--border)}}
+      /* ¬изуал ссылок-строк */
+      .link-card{background:var(--panel); border:1px solid var(--border); box-shadow:none}
+      .link-card h3{font-size:20px; letter-spacing:.2px}
+      .links-list{display:grid; gap:8px; margin:0; padding:0}
+      .links-list li{list-style:none}
+      .link-row{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:rgba(255,255,255,0.03); transition:background .2s, border-color .2s}
+      .link-row:hover{background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2)}
+      .link-row .left{display:flex; align-items:center; gap:10px}
+      .ext{opacity:.6}
+
+      /* Design tokens and overrides for richer look */
+      :root{ --radius-s:10px; --radius-m:14px; --radius-l:18px; --shadow-1:0 1px 2px rgba(0,0,0,.25),0 2px 8px rgba(0,0,0,.2); --shadow-2:0 6px 18px rgba(0,0,0,.25); --shadow-3:0 12px 32px rgba(0,0,0,.35); }
+
+      /* Typography scale */
+      h1{ font-size:clamp(40px,6vw,56px); letter-spacing:-0.02em; }
+      h2{ font-size:clamp(22px,3vw,32px); }
+
+      /* Glassy topbar */
+      .topbar{ background:rgba(12,12,14,0.6); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.08); box-shadow:0 1px 0 rgba(255,255,255,0.06), 0 8px 24px rgba(0,0,0,0.25); }
+
+      /* Brand-tinted button states */
+      .button:hover{ box-shadow:var(--shadow-2), 0 0 0 3px rgba(var(--brand-rgb),0.22); }
+
+      /* Cards with subtle gradient border */
+      .card{ border:1px solid transparent; background:
+        linear-gradient(var(--panel), var(--panel)) padding-box,
+        linear-gradient(135deg, rgba(255,255,255,0.08), rgba(var(--brand-rgb),0.18) 35%, rgba(255,255,255,0.08)) border-box; }

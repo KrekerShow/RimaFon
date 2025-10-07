@@ -1,0 +1,11 @@
+0: <!doctype html>
+1: <html lang="ru">
+2:   <head>
+3:     <meta charset="utf-8">
+4:     <meta name="viewport" content="width=device-width, initial-scale=1">
+5:     <title>Риматон — Ивент по RimWorld</title>
+6:     <meta name="description" content="Риматон: предложи идею донатом — добавим в рулетку. Каждые 5?000 ? обеспечивают дополнительный стрим на неделе.">
+7:     <meta property="og:title" content="Риматон — Ивент по RimWorld">
+8:     <meta property="og:description" content="1) Пожертвуй с названием идеи > 2) Рулетка выбирает > 3) Каждые 5?000 ? = +1 стрим на неделе.">
+9:     <meta property="og:type" content="website">
+10:     <meta name="twitter:card" content="summary_large_image">

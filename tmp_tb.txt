@@ -1,0 +1,17 @@
+    <div class="topbar">
+      <div class="container inner">
+        <span class="note">Предложи идею к стримам</span>
+        </nav>
+        <a class="button" href="https://www.donationalerts.com/r/krekeros" target="_blank" rel="noopener">DonationAlerts</a>
+      </div>
+    </div>
+
+    <div class="hero bg-grid">
+      <div class="container">
+        <span class="badge">Ивент по RimWorld</span>
+        <h1>Римафон</h1>
+        <div class="hero-banner">
+          <img src="banner.png" alt="Banner" loading="lazy" decoding="async">
+        </div>
+        <p class="muted">RimWorld: предложи идею донатом — добавим её в рулетку; каждые 5?000 ? обеспечивают дополнительный стрим на неделе.</p>
+        <div class="actions">

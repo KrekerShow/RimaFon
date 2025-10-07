@@ -1,0 +1,11 @@
+      .item .title{display:flex; align-items:center; justify-content:space-between; gap:12px; color:#fff; font-weight:700}
+      .item .desc{color:var(--muted)}
+      .tags{display:flex; flex-wrap:wrap; gap:6px}
+      .tag{padding:4px 8px; font-size:12px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid var(--border); color:var(--text); transition:background .2s, border-color .2s, color .2s}
+      .tag:hover{background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.25); color:#fff}
+      .links{display:flex; gap:8px; flex-wrap:wrap}
+      .link-btn{padding:8px 10px; font-weight:600; border-radius:10px; border:1px solid var(--border); background:rgba(255,255,255,0.08); color:#fff; transition:background .2s, border-color .2s, transform .15s ease, box-shadow .2s}
+      .link-btn:hover{background:rgba(255,255,255,0.14); border-color:rgba(255,255,255,0.25); transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,0.22)}
+      .footer{padding:32px 0 48px; color:var(--muted); text-align:center; font-size:14px}
+      .bg-grid:before, .bg-grid:after{content:""; position:absolute; inset:0; z-index:-1}
+      .bg-grid:before{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.12) 0, rgba(255,255,255,0.12) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, rgba(255,255,255,0.12) 0, rgba(255,255,255,0.12) 1px, transparent 1px, transparent 40px); opacity:.06}

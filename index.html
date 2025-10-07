@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ru">
   <head>
     <meta charset="utf-8">
@@ -13,8 +13,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Stalinist+One&display=swap" rel="stylesheet">
     <style>
-      :root { --bg:#0a0a0a; --panel:rgba(0,0,0,0.4); --border:rgba(255,255,255,0.1); --text:#e4e4e7; --muted:#a1a1aa; --accent:#ffffff; }
+      :root { --bg:#0a0a0a; --panel:rgba(0,0,0,0.4); --border:rgba(255,255,255,0.1); --text:#e4e4e7; --muted:#a1a1aa; --accent:#ffffff; --brand:#22d3ee; --brand-rgb:34,211,238; --onbrand:#001014; }
       *{box-sizing:border-box}
       html,body{height:100%}
       html{scroll-behavior:smooth}
@@ -27,28 +28,42 @@
       p{color:var(--text); line-height:1.6}
       .hero{position:relative; padding:80px 0 40px; text-align:center; overflow:hidden}
       .hero .actions{margin-top:20px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
-      .button{display:inline-flex; align-items:center; gap:8px; padding:12px 18px; border-radius:14px; border:1px solid var(--border); background:#fff; color:#000; font-weight:600}
-      .button.secondary{background:rgba(255,255,255,0.08); color:#fff}
+      .hero-banner{margin:16px auto 10px; width:min(70vw, 360px); aspect-ratio:1/1; border:1px solid var(--border); border-radius:14px; background:rgba(255,255,255,0.03); overflow:hidden; transition:border-color .2s, background .2s}
+      .hero-banner img{width:100%; height:100%; object-fit:cover; display:block}
+      .hero-banner:hover{background:rgba(255,255,255,0.06); border-color:rgba(var(--brand-rgb),0.45)}
+      .button{display:inline-flex; align-items:center; gap:8px; padding:12px 18px; border-radius:14px; border:1px solid transparent; background:var(--brand); color:var(--onbrand); font-weight:600; transition:transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, color .2s ease}
+      .button:hover{transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,0.25)}
+      .button:focus-visible{outline:none; box-shadow:0 0 0 3px rgba(255,255,255,0.25)}
+      .button.secondary{background:rgba(var(--brand-rgb),0.14); color:#fff; border-color:rgba(var(--brand-rgb),0.35)}
+      .button.secondary:hover{background:rgba(var(--brand-rgb),0.22); border-color:rgba(var(--brand-rgb),0.5)}
       .section{padding:24px 0}
-      .card{background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:16px; backdrop-filter: blur(8px)}
+      .card{background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:16px; backdrop-filter: blur(8px); transition:border-color .2s ease, background .2s ease, transform .15s ease, box-shadow .2s ease}
+      .card:hover{border-color:rgba(255,255,255,0.18); box-shadow:0 8px 26px rgba(0,0,0,0.22)}
       .grid{display:grid; grid-template-columns:1fr; gap:16px}
       @media (min-width:768px){ .grid.cols-3{grid-template-columns:repeat(3,1fr)} .grid.cols-2{grid-template-columns:repeat(2,1fr)} }
-      .list .item{display:flex; flex-direction:column; gap:8px; padding:14px; border:1px solid var(--border); border-radius:14px; background:rgba(255,255,255,0.03)}
+      .list .item{display:flex; flex-direction:column; gap:8px; padding:14px; border:1px solid var(--border); border-radius:14px; background:rgba(255,255,255,0.03); transition:background .2s, border-color .2s, transform .15s ease, box-shadow .2s}
+      .list .item:hover{background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2); transform:translateY(-1px); box-shadow:0 6px 20px rgba(0,0,0,0.22)}
       .item .title{display:flex; align-items:center; justify-content:space-between; gap:12px; color:#fff; font-weight:700}
       .item .desc{color:var(--muted)}
       .tags{display:flex; flex-wrap:wrap; gap:6px}
-      .tag{padding:4px 8px; font-size:12px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid var(--border); color:var(--text)}
+      .tag{padding:4px 8px; font-size:12px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid var(--border); color:var(--text); transition:background .2s, border-color .2s, color .2s}
+      .tag:hover{background:rgba(var(--brand-rgb),0.2); border-color:rgba(var(--brand-rgb),0.45); color:#fff}
       .links{display:flex; gap:8px; flex-wrap:wrap}
-      .link-btn{padding:8px 10px; font-weight:600; border-radius:10px; border:1px solid var(--border); background:rgba(255,255,255,0.08); color:#fff}
+      .link-btn{padding:8px 10px; font-weight:600; border-radius:10px; border:1px solid rgba(var(--brand-rgb),0.35); background:rgba(var(--brand-rgb),0.12); color:#fff; transition:background .2s, border-color .2s, transform .15s ease, box-shadow .2s}
+      .link-btn:hover{background:rgba(var(--brand-rgb),0.2); border-color:rgba(var(--brand-rgb),0.5); transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,0.22)}
       .footer{padding:32px 0 48px; color:var(--muted); text-align:center; font-size:14px}
       .bg-grid:before, .bg-grid:after{content:""; position:absolute; inset:0; z-index:-1}
       .bg-grid:before{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.12) 0, rgba(255,255,255,0.12) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, rgba(255,255,255,0.12) 0, rgba(255,255,255,0.12) 1px, transparent 1px, transparent 40px); opacity:.06}
-      .bg-grid:after{background:radial-gradient(60% 40% at 70% 10%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 60%), radial-gradient(40% 30% at 30% 80%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 60%)}
+      .bg-grid:after{background:radial-gradient(60% 40% at 70% 10%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 60%), radial-gradient(42% 32% at 50% 30%, rgba(var(--brand-rgb),0.20) 0%, rgba(var(--brand-rgb),0) 60%), radial-gradient(40% 30% at 30% 80%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 60%)}
       .small{font-size:13px}
       .muted{color:var(--muted)}
       .topbar{position:sticky; top:0; z-index:20; background:#0e0e0f; border-bottom:1px solid var(--border); box-shadow:0 1px 0 rgba(255,255,255,0.06)}
       .topbar .inner{display:flex; gap:12px; align-items:center; justify-content:center; padding:8px 0; flex-wrap:wrap}
       .topbar .note{font-weight:600}
+      .nav{display:flex; gap:8px; flex-wrap:wrap}
+      .nav a{padding:8px 10px; border-radius:10px; color:var(--text); border:1px solid transparent; transition:background .2s, border-color .2s, color .2s}
+      .nav a:hover{background:rgba(255,255,255,0.07); border-color:rgba(255,255,255,0.18); color:#fff}
+      .nav a.active{background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.22); color:#fff}
       /* Мягкая подсветка якорей: только рамка */
       .flash{animation:flashBorder 1.2s ease-out; border-color:rgba(255,255,255,.85)!important}
       @keyframes flashBorder{0%{border-color:rgba(255,255,255,.95)}100%{border-color:var(--border)}}
@@ -61,6 +76,68 @@
       .link-row:hover{background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2)}
       .link-row .left{display:flex; align-items:center; gap:10px}
       .ext{opacity:.6}
+
+      /* Design tokens and overrides for richer look */
+      :root{ --radius-s:10px; --radius-m:14px; --radius-l:18px; --shadow-1:0 1px 2px rgba(0,0,0,.25),0 2px 8px rgba(0,0,0,.2); --shadow-2:0 6px 18px rgba(0,0,0,.25); --shadow-3:0 12px 32px rgba(0,0,0,.35); }
+
+      /* Typography scale */
+      h1{ font-size:clamp(40px,6vw,56px); letter-spacing:-0.02em; }
+      h2{ font-size:clamp(22px,3vw,32px); }
+
+      /* Glassy topbar */
+      .topbar{ background:rgba(12,12,14,0.6); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.08); box-shadow:0 1px 0 rgba(255,255,255,0.06), 0 8px 24px rgba(0,0,0,0.25); }
+
+      /* Brand-tinted button states */
+      .button:hover{ box-shadow:var(--shadow-2), 0 0 0 3px rgba(var(--brand-rgb),0.22); }
+
+      /* Cards with subtle gradient border */
+      .card{ border:1px solid transparent; background:
+        linear-gradient(var(--panel), var(--panel)) padding-box,
+        linear-gradient(135deg, rgba(255,255,255,0.08), rgba(var(--brand-rgb),0.18) 35%, rgba(255,255,255,0.08)) border-box; }
+      .card:hover{ box-shadow:var(--shadow-3); }
+
+      /* List items hover with slight brand tint */
+      .list .item:hover{ border-color:rgba(var(--brand-rgb),0.35); }
+
+      /* Links list: stronger hover border tint */
+      .link-row:hover{ border-color:rgba(var(--brand-rgb),0.35); }
+
+      /* Section separators and heading underline */
+      .section{ position:relative; }
+      .section:not(:first-of-type):before{ content:""; position:absolute; left:0; right:0; top:0; height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); }
+      .section h2{ position:relative; }
+      .section h2:after{ content:""; display:block; height:2px; width:64px; margin-top:6px; background:linear-gradient(90deg, rgba(var(--brand-rgb),0.85), rgba(var(--brand-rgb),0)); border-radius:999px; }
+
+      /* Badge slight tint */
+      .badge{ border-color:rgba(var(--brand-rgb),0.22); }
+
+      /* Stronger brand glow in hero grid */
+      .bg-grid:after{ background:
+        radial-gradient(60% 40% at 70% 10%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 60%),
+        radial-gradient(42% 32% at 50% 30%, rgba(var(--brand-rgb),0.20) 0%, rgba(var(--brand-rgb),0) 60%),
+        radial-gradient(40% 30% at 30% 80%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 60%); }
+
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce){ *{ transition:none !important; animation:none !important } }
+      /* Background animations and overlays */
+      .bg-grid:before{ background-position:0 0, 0 0; background-size:40px 40px, 40px 40px; animation:gridDrift 60s linear infinite; }
+      @keyframes gridDrift{ from{ background-position:0 0, 0 0 } to{ background-position:0 40px, 40px 0 } }
+      .bg-grid:after{ background-position:70% 10%, 50% 30%, 30% 80%; animation:brandGlow 45s ease-in-out infinite alternate; }
+      @keyframes brandGlow{ 0%{ background-position:70% 10%, 50% 30%, 30% 80% } 100%{ background-position:62% 8%, 54% 35%, 32% 75% } }
+      body:before{ content:""; position:fixed; inset:0; pointer-events:none; z-index:0; background:radial-gradient(120% 80% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.35) 100%); }
+      body:after{ content:""; position:fixed; inset:0; pointer-events:none; z-index:1; background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.35"/></svg>'); background-size:140px 140px; opacity:.04; mix-blend-mode:overlay; }
+      /* Event/casino-styled title for hero */
+      .hero h1{ font-family:'Stalinist One','Rubik','Segoe UI',system-ui,Arial,sans-serif; text-transform:uppercase; letter-spacing:.02em; text-shadow:0 0 1px rgba(0,0,0,.5), 0 2px 18px rgba(0,0,0,.35), 0 0 10px rgba(var(--brand-rgb),.45), 0 0 26px rgba(var(--brand-rgb),.35); }
+      .hero h1:after{ content:""; display:block; height:3px; width:96px; margin:10px auto 0; background:linear-gradient(90deg, rgba(var(--brand-rgb),0.95), rgba(var(--brand-rgb),0)); border-radius:999px }
+
+      /* Photo gallery slots */
+      .photo-grid{ align-items:stretch }
+      .photo-slot{ position:relative; width:100%; aspect-ratio:1/1; border:1px solid var(--border); border-radius:14px; background:rgba(255,255,255,0.03); overflow:hidden; transition:border-color .2s, background .2s, box-shadow .2s }
+      .photo-slot.wide{ aspect-ratio:16/9 }
+      .photo-slot.tall{ aspect-ratio:4/5 }
+      .photo-slot img{ width:100%; height:100%; object-fit:cover; display:block }
+      .photo-slot .ph{ position:absolute; inset:auto 0 0 0; margin:auto; top:0; bottom:0; height:min-content; text-align:center; color:var(--muted); font-size:13px }
+      .photo-slot:hover{ background:rgba(255,255,255,0.06); border-color:rgba(var(--brand-rgb),0.45); box-shadow:0 8px 26px rgba(0,0,0,0.22) }
     </style>
   </head>
   <body>
@@ -74,7 +151,10 @@
     <div class="hero bg-grid">
       <div class="container">
         <span class="badge">Ивент по RimWorld</span>
-        <h1>Риматон</h1>
+        <h1>Римафон</h1>
+        <div class="hero-banner">
+          <img src="banner.png" alt="Banner" loading="lazy" decoding="async">
+        </div>
         <p class="muted">RimWorld: предложи идею донатом — добавим её в рулетку; каждые 5 000 ₽ обеспечивают дополнительный стрим на неделе.</p>
         <div class="actions">
           <a class="button" href="https://www.donationalerts.com/r/krekeros" target="_blank" rel="noopener">Предложить идею</a>
@@ -125,7 +205,6 @@
 
       <section id="upcoming" class="section">
         <h2>Будущие колонии</h2>
-        <p class="muted small" style="margin:6px 0 12px">Первая — текущая (с кнопками), вторая — следующая.</p>
         <div class="card">
           <div class="list grid" id="upcoming-list"></div>
         </div>
@@ -247,6 +326,23 @@
         });
       });
       if(location.hash){ setTimeout(()=> flashSection(location.hash.slice(1)), 300); }
+
+      // Навигация: подсветка активного раздела в топбаре
+      (function(){
+        const nav = document.querySelector('.nav');
+        if(!nav) return;
+        const links = Array.from(nav.querySelectorAll('a'));
+        const byId = new Map(links.map(a=>[a.getAttribute('href')?.replace('#','')||'', a]));
+        function setActive(id){
+          links.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
+        }
+        const obs = new IntersectionObserver((entries)=>{
+          entries.forEach(e=>{ if(e.isIntersecting){ setActive(e.target.id); } });
+        },{ root:null, rootMargin:'-60% 0px -35% 0px', threshold:0.01 });
+        ['how','about','upcoming','links'].forEach(id=>{ const el=document.getElementById(id); if(el) obs.observe(el); });
+        // При клике по пункту меню — мгновенно подсветить
+        links.forEach(a=>a.addEventListener('click',()=>{ const id=a.getAttribute('href')?.replace('#',''); if(id) setActive(id); }));
+      })();
 
       renderUpcoming();
       renderFinished();
