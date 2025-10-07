@@ -119,6 +119,10 @@
 
       /* Reduced motion support */
       @media (prefers-reduced-motion: reduce){ *{ transition:none !important; animation:none !important } }
+
+      /* Small heading/icon helpers */
+      .h2-ico{height:1em;width:auto;display:inline-block;object-fit:contain;vertical-align:-0.15em;margin-right:.45em;border:0;background:transparent;border-radius:0}
+      .lead-ico{width:16px;height:16px;object-fit:cover;vertical-align:-3px;margin-right:6px;border-radius:4px;border:1px solid rgba(var(--brand-rgb),0.35);background:rgba(255,255,255,0.08)}
       /* Background animations and overlays */
       .bg-grid:before{ background-position:0 0, 0 0; background-size:40px 40px, 40px 40px; animation:gridDrift 60s linear infinite; }
       @keyframes gridDrift{ from{ background-position:0 0, 0 0 } to{ background-position:0 40px, 40px 0 } }
@@ -161,14 +165,14 @@
           <a class="button secondary" href="#upcoming">К текущей колонии</a>
           <a class="button secondary" href="#links">Полезные ссылки</a>
         </div>
-        <p class="muted small" style="margin-top:10px">Шаблон идеи: Формат — Условия — Ограничения (1–2 предложения)</p>
+        <p class="muted small" style="margin-top:10px"> Шаблон идеи: Формат — Условия — Ограничения (1–2 предложения)</p>
       </div>
     </div>
 
     <section id="how" class="section">
       <div class="container">
         <div class="card">
-          <h2>Как это работает</h2>
+          <h2><img class="h2-ico" src="rim.png" alt="">Как это работает <img class="h2-ico" src="smile5.png" alt=""></h2>
           <ul style="margin:6px 0 0; padding-left:18px; line-height:1.8">
             <li>Пожертвуй с названием идеи</li>
             <li>Рулетка выбирает</li>
@@ -182,7 +186,10 @@
       <section id="about" class="section">
         <div class="grid cols-2">
           <div class="card">
-            <h2>Формат</h2>
+            <div class="hero-banner">
+              <img src="Format.png" alt="Banner" loading="lazy" decoding="async">
+            </div>
+            <h2><img class="h2-ico" src="rim.png" alt="">Формат <img class="h2-ico" src="smile2.png" alt=""></h2>
             <ul style="margin:0; padding-left:18px; line-height:1.7">
               <li>Я, стример Krekeros, играю в колонии на различных условиях: челленджи, уникальные сценарии, карты, сборки модов и донат‑ивенты.</li>
               <li>Есть рулетка с челленджами — пополняйте своими идеями через донат.</li>
@@ -191,7 +198,10 @@
             </ul>
           </div>
           <div class="card">
-            <h2>Добавление идей в аукцион</h2>
+            <div class="hero-banner">
+              <img src="NERD.png" alt="Banner" loading="lazy" decoding="async">
+            </div>
+            <h2><img class="h2-ico" src="rim.png" alt="">Добавление идей <img class="h2-ico" src="smile1.png" alt=""></h2>
             <ul style="margin:0; padding-left:18px; line-height:1.9; font-size:17px">
               <li>Добавить можно любую идею за любой донат — главное указать её название в описании.</li>
               <li>Идеи выбираются один раз с рулетки между стартами новых форматов.</li>
@@ -204,21 +214,21 @@
       </section>
 
       <section id="upcoming" class="section">
-        <h2>Будущие колонии</h2>
+        <h2><img class="h2-ico" src="rim.png" alt="">Будущие колонии <img class="h2-ico" src="smile3.png" alt=""></h2>
         <div class="card">
           <div class="list grid" id="upcoming-list"></div>
         </div>
       </section>
 
       <section id="finished" class="section">
-        <h2>Завершённые колонии</h2>
+        <h2><img class="h2-ico" src="rim.png" alt="">Завершённые колонии <img class="h2-ico" src="smile4.png" alt=""></h2>
         <div class="card">
           <div class="list grid" id="finished-list"></div>
         </div>
       </section>
 
       <section id="links" class="section">
-        <h2>Полезные ссылки</h2>
+        <h2><img class="h2-ico" src="rim.png" alt="">Полезные ссылки <img class="h2-ico" src="smile6.png" alt=""></h2>
         <div class="grid cols-2">
           <div class="card link-card">
             <h3 style="margin:0 0 8px;color:#fff">Для анонсов</h3>
@@ -346,6 +356,23 @@
 
       renderUpcoming();
       renderFinished();
+
+      // Prepend rim.png before H2 "Формат" if present
+      (function(){
+        try{
+          document.querySelectorAll('h2').forEach(h=>{
+            const text = (h.textContent||'').trim();
+            if(text === 'Формат' && !h.querySelector('img.h2-ico')){
+              const img = document.createElement('img');
+              img.className = 'h2-ico';
+              img.src = 'rim.png';
+              img.alt = '';
+              h.prepend(img);
+              h.insertBefore(document.createTextNode(' '), img.nextSibling);
+            }
+          });
+        }catch(e){/* noop */}
+      })();
     </script>
   </body>
 </html>
