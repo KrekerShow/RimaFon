@@ -270,8 +270,8 @@
         {
           title: 'Челлендж 500% БЕЗ ПАУЗЫ',
           desc: 'Классический старт но без паузы и сложность рейдов 500%',
-          watch: '#',
-          mods: '#'
+          watch: 'https://youtube.com/live/uZ7rUlIk1gU?feature=share',
+          mods: 'https://steamcommunity.com/sharedfiles/filedetails/?id=1955361870'
         },
         { title: 'Скоро узнаем', desc: '...' },
         { title: 'Скоро узнаем', desc: '...' }
@@ -312,8 +312,8 @@
             <div class="title"><span>${g.title}</span></div>
             <div class="desc">${g.desc || ''}</div>
             <div class="links">
-              ${g.watch ? `<a class="link-btn" href="https://youtube.com/live/uZ7rUlIk1gU?feature=share" target="_blank" rel="noopener">Смотреть</a>` : ''}
-              ${g.mods ? `<a class="link-btn" href="https://steamcommunity.com/sharedfiles/filedetails/?id=1955361870" target="_blank" rel="noopener">Моды</a>` : ''}
+              ${g.watch ? `<a class="link-btn" href="${g.watch}" target="_blank" rel="noopener">Смотреть</a>` : ''}
+              ${g.mods ? `<a class="link-btn" href="${g.mods}" target="_blank" rel="noopener">Моды</a>` : ''}
             </div>
           </div>
         `).join('');
