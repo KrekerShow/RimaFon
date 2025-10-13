@@ -1,4 +1,4 @@
-﻿<!doctype html>
+﻿﻿<!doctype html>
 <html lang="ru">
   <head>
     <meta charset="utf-8">
@@ -205,7 +205,7 @@
             </div>
             <h2><img class="h2-ico" src="rim.png" alt="">Добавление идей <img class="h2-ico" src="smile1.png" alt=""></h2>
             <ul style="margin:0; padding-left:18px; line-height:1.9; font-size:17px">
-              <li>Добавить идею можно за любой донат — писать её нужно в поле сообщения доната.</li>
+              <li>Добавить идею можно за донат от 100 рублей — писать её нужно в поле сообщения доната.</li>
               <li>Никаких 18+ модов</li>
               <li>НЕ ПРЕДЛАГАТЬ ЧУЖИЕ СБОРКИ (они долгие)</li>
               <li>Идеи должны быть в Меру Адекватные*, копать 10 часов дерево могу, но зачем? -_-</li>
@@ -269,19 +269,28 @@
       // ДАННЫЕ ДЛЯ РЕДАКТИРОВАНИЯ
       // Первая запись в upcoming считается «Текущая» и показывает кнопки; вторая — «Следующая» без кнопок
       const upcoming = [
+        { 
+          title: 'Stronger Vanilla Mech - Механитор (не больше 3-х пешек) (Без РЖАВИКОВ)', 
+          desc: 'Цель: Победить финальные волны усиленных Боссов из Мода Stronger Vanilla Mech (Лимит в 3 пешки/Без ржавой армии)', 
+          watch: 'https://youtu.be/uwdJoCtb0sg',
+          mods: 'https://steamcommunity.com/sharedfiles/filedetails/?id=3586293709'
+        },
+        { 
+          title: 'Мир полный Шамблеров + Сюжетка Vanilla Quests Expanded - Deadlife', 
+          desc: 'Цель: Пройти сюжетку Vanilla Quests Expanded - Deadlife с миром из Шамблеров!' },
+        { 
+          title: 'Римворлд без крафтов, но с системой КАЗИНО', 
+          desc: 'Нельзя получить оружие и броню, никак кроме использования КАЗИНО...', 
+        }
+      ];
+
+      const finished = [
         {
           title: 'Челлендж 500% БЕЗ ПАУЗЫ',
           desc: 'Классический старт но без паузы и сложность рейдов 500%',
           watch: 'https://youtube.com/live/uZ7rUlIk1gU?feature=share',
           mods: 'https://steamcommunity.com/sharedfiles/filedetails/?id=1955361870'
-        },
-        { title: 'Stronger Vanilla Mech - Механитор (не больше 3-х пешек) (Без РЖАВИКОВ)', desc: 'Цель: Победить финальные волны усиленных Боссов из Мода Stronger Vanilla Mech (Лимит в 3 пешки/Без ржавой армии)' },
-        { title: 'Мир полный Шамблеров + Сюжетка Vanilla Quests Expanded - Deadlife', desc: 'Цель: Пройти сюжетку Vanilla Quests Expanded - Deadlife с миром из Шамблеров!' }
-      ];
-
-      const finished = [
-        // Пример:
-        // { title: 'Горный приют', desc: 'База в горном биоме, финал — корабль.', watch: '#', mods: '#' }
+        }
       ];
 
       const upcomingEl = document.getElementById('upcoming-list');
@@ -380,4 +389,3 @@
     </script>
   </body>
 </html>
-
