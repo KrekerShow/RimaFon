@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Риматон — Ивент по RimWorld</title>
+    <title>Ванильный RimАук</title>
     <meta name="description" content="Риматон: предложи идею донатом — добавим в рулетку. Каждые 5 000 ₽ обеспечивают дополнительный стрим на неделе.">
     <meta property="og:title" content="Риматон — Ивент по RimWorld">
     <meta property="og:description" content="1) Пожертвуй с названием идеи → 2) Рулетка выбирает → 3) Каждые 5 000 ₽ = +1 стрим на неделе.">
@@ -44,7 +44,16 @@
       .list .item:hover{background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2); transform:translateY(-1px); box-shadow:0 6px 20px rgba(0,0,0,0.22)}
       .item .title{display:flex; align-items:center; justify-content:space-between; gap:12px; color:#fff; font-weight:700}
       .item .desc{color:var(--muted)}
-      .item .title .name{flex:1; min-width:0; overflow:hidden; white-space:normal; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical}
+      .item .title .name{
+      flex:1;
+      min-width:0;
+      overflow:visible;
+      white-space:normal;
+      display:block;         /* убрали -webkit-box */
+      -webkit-line-clamp:unset;
+      -webkit-box-orient:unset;
+      word-break:break-word; /* чтобы длинные слова не ломали верстку */
+      }
       .scroll-y{max-height:360px; overflow-y:auto; overflow-x:hidden}
       .tags{display:flex; flex-wrap:wrap; gap:6px}
       .tag{padding:4px 8px; font-size:12px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid var(--border); color:var(--text); transition:background .2s, border-color .2s, color .2s}
@@ -205,6 +214,7 @@
             <h2><img class="h2-ico" src="rim.png" alt="">Добавление идей <img class="h2-ico" src="smile1.png" alt=""></h2>
             <ul style="margin:0; padding-left:18px; line-height:1.9; font-size:17px">
               <li>Добавить идею можно за донат от 100 рублей — писать её нужно в поле сообщения доната.</li>
+              <li>Суть идей - Около ваниль/Челленджи, т.е по задумке это биомы, условия игры или что-то смежное (обсуждаемо)</li>
               <li>Никаких 18+ модов</li>
               <li>НЕ ПРЕДЛАГАТЬ ЧУЖИЕ СБОРКИ</li>
               <li>Идеи должны быть в Меру Адекватные*, копать 10 часов дерево могу, но зачем?</li>
